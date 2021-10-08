@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:projeto_agenda/models/Annotation.dart';
 
