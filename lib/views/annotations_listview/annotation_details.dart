@@ -12,19 +12,20 @@ class AnnotationDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        buildPropertyAndValue("Title:", annotation.Title, 70),
-        buildPropertyAndValue("Description:", annotation.Description, 10),
-        buildPropertyAndValue("Category:", annotation.Category, 10),
-        buildPropertyAndValue("Creation Date:",
+        _buildPropertyAndValue("Title:", annotation.Title, 70),
+        _buildPropertyAndValue("Description:", annotation.Description, 10),
+        _buildPropertyAndValue("Category:", annotation.Category, 10),
+        _buildPropertyAndValue("Creation Date:",
             formatDate(annotation.Date, ['mm', '/', 'dd', '/', 'yyyy']), 10),
         if(annotation.DateRemind != null)
-          buildPropertyAndValue("Notify At:",
-              formatDate(annotation.DateRemind!, ['mm', '/', 'dd', '/', 'yyyy', ' at ', 'HH', ':', 'nn', am]), 10)
+          _buildPropertyAndValue("Notify At:",
+              formatDate(annotation.DateRemind!, ['mm', '/', 'dd', '/', 'yyyy', ' at ', 'HH', '\\h', 'nn']), 10),
+        _actionbuttons()
       ],
     );
   }
 
-  Widget buildPropertyAndValue(String propertyName, String value,
+  Widget _buildPropertyAndValue(String propertyName, String value,
       double marginTop) {
     return Column(
         children: [
@@ -34,13 +35,35 @@ class AnnotationDetails extends StatelessWidget {
             margin: EdgeInsets.only(top: marginTop, bottom: 5),
             padding: EdgeInsets.only(left: 15, top: 8),
             height: 35,
-            child: Text(propertyName, style: TextStyle(fontSize: 16)),
+            child: Text(propertyName, style: TextStyle(fontSize: 17)),
           ),
           Container(
-              padding: EdgeInsets.only(left: 15, top: 8),
-              child: Text(value, style: TextStyle(fontSize: 15))
+              alignment: Alignment.centerLeft,
+              padding: EdgeInsets.only(left: 15, top: 8, right: 15),
+              child: Text(value, style: TextStyle(fontSize: 16))
           )
         ]
+    );
+  }
+
+  Widget _actionbuttons(){
+    return Row(
+      children: [
+        Padding(
+            padding: EdgeInsets.only(left: 100, top: 10, bottom: 10, right: 5),
+            child: ElevatedButton.icon(
+                onPressed: () => {},
+                icon: Icon(Icons.edit, size: 20),
+                label: Text("Edit", style: TextStyle(fontSize: 18)),
+                style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blueAccent)))),
+        Padding(
+            padding: EdgeInsets.only(left: 10, top: 10, bottom: 10, right: 5),
+            child: ElevatedButton.icon(
+                onPressed: () => {},
+                icon: Icon(Icons.delete_forever, size: 20,),
+                label: Text("Delete", style: TextStyle(fontSize: 18)),
+                style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.red))))
+      ],
     );
   }
 }

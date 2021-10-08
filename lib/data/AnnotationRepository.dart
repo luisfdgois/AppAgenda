@@ -17,3 +17,11 @@ final dummy_anotations = {
   '7': Annotation(7, "Reunião de alinhamento sprint 7",
       "Reunião utilizada para debater mudanças solicitadas pelo cliente na regra de negócio.", "Reuniões", DateTime.now(), null),
 };
+
+final dummy_categories = {
+  '1': "Any",
+  '2': "Meetings",
+  '3': "Gym",
+  '4': "Work",
+  '5': "College"
+};
