@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
 class Annotation {
-  final int Id;
+  int? Id;
   final String Title;
   final String Description;
   final String Category;
   final DateTime Date;
-  final DateTime? DateRemind;
+  final bool Notifiable;
 
-  const Annotation(
+  Annotation(
       this.Id,
       this.Title,
       this.Description,
       this.Category,
       this.Date,
-      this.DateRemind);
+      this.Notifiable);
 }

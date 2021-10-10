@@ -1,27 +1,32 @@
-
+import 'package:flutter/material.dart';
+import 'package:projeto_agenda/data/query_filters/GetAnnotationsParam.dart';
 import 'package:projeto_agenda/models/Annotation.dart';
+import 'package:projeto_agenda/data/DataBase.dart';
 
-final dummy_anotations = {
-  '1': Annotation(1, "Reunião de alinhamento sprint 1 Reunião de alinhamento sprint 1",
-      "Reunião utilizada para debater mudanças solicitadas pelo cliente na regra de negócio.", "Reuniões", DateTime.now(), null),
-  '2': Annotation(2, "Reunião de alinhamento sprint 2",
-      "Reunião utilizada para debater mudanças solicitadas pelo cliente na regra de negócio.", "Reuniões", DateTime.now(), DateTime.now()),
-  '3': Annotation(3, "Reunião de alinhamento sprint 3",
-      "Reunião utilizada para debater mudanças solicitadas pelo cliente na regra de negócio.", "Reuniões", DateTime.now(), DateTime.now()),
-  '4': Annotation(4, "Reunião de alinhamento sprint 4",
-      "Reunião utilizada para debater mudanças solicitadas pelo cliente na regra de negócio.", "Reuniões", DateTime.now(), null),
-  '5': Annotation(5, "Reunião de alinhamento sprint 5",
-      "Reunião utilizada para debater mudanças solicitadas pelo cliente na regra de negócio.", "Reuniões", DateTime.now(), null),
-  '6': Annotation(6, "Reunião de alinhamento sprint 6",
-      "Reunião utilizada para debater mudanças solicitadas pelo cliente na regra de negócio.", "Reuniões", DateTime.now(), DateTime.now()),
-  '7': Annotation(7, "Reunião de alinhamento sprint 7",
-      "Reunião utilizada para debater mudanças solicitadas pelo cliente na regra de negócio.", "Reuniões", DateTime.now(), null),
-};
+class AnnotationRepository extends ChangeNotifier{
 
-final dummy_categories = {
-  '1': "Any",
-  '2': "Meetings",
-  '3': "Gym",
-  '4': "Work",
-  '5': "College"
-};
+  final Map<String, Annotation> _annotations = {...dummy_annotations};
+
+  List<Annotation> all(GetAnnotationsParam param){
+    var query = _annotations.values
+        .where((annotation) => (annotation.Date.year == param.selectedDate.year) &&
+        (annotation.Date.month == param.selectedDate.month) && (annotation.Date.day == param.selectedDate.day));
+
+    if(param.selectedCategory != null)
+      query = query.where((annotation) => annotation.Category == param.selectedCategory);
+
+    if(param.isNotifiable != false)
+      query = query.where((annotation) => annotation.Notifiable == true);
+
+    return query.toList();
+  }
+
+  void add(Annotation annotation){
+    final id = _annotations.values.last.Id! + 1;
+    annotation.Id = id;
+
+    _annotations.putIfAbsent(id.toString(), () => annotation);
+
+    notifyListeners();
+  }
+}
