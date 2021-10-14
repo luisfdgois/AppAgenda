@@ -5,7 +5,7 @@ class CalendarComponents {
   var headerStyle = HeaderStyle(
     titleCentered: true,
     formatButtonVisible: false,
-    titleTextStyle: TextStyle(fontSize: 17, locale: Locale('pt', 'BR')),
+    titleTextStyle: TextStyle(fontSize: 17, locale: Locale('pt', 'BR'))
   );
 
   var calendarStyle = CalendarStyle(

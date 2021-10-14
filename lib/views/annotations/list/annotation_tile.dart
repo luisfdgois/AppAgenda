@@ -3,7 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:projeto_agenda/models/Annotation.dart';
 import 'package:flutter/material.dart';
 import 'package:date_format/date_format.dart';
-import 'package:projeto_agenda/views/annotations_listview/annotation_details.dart';
+import 'package:projeto_agenda/views/annotations/list/annotation_details.dart';
 
 class AnnotationTile extends StatelessWidget {
   final Annotation annotation;
@@ -12,6 +12,7 @@ class AnnotationTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Card(
         color: Color(0xff7FBCDE),
         child: ListTile(
@@ -52,7 +53,7 @@ class AnnotationTile extends StatelessWidget {
             Expanded(
                 flex: 5,
                 child: Text(formatDate(
-                    annotation.Date, ['dd', '/', 'mm', '/', 'yyyy']))),
+                    annotation.Date, ['mm', '/', 'dd', '/', 'yyyy']))),
             Expanded(flex: 5, child: Text(annotation.Category))
           ],
         ));

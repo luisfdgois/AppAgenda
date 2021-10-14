@@ -26,7 +26,7 @@ class _AnnotationCreateState extends State<AnnotationCreate> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: Text("Annotation", textAlign: TextAlign.center),
+            title: Text("New Annotation", textAlign: TextAlign.center),
             backgroundColor: Color(0xff0884CA),
             centerTitle: true,
             titleTextStyle: TextStyle(color: Colors.white, fontSize: 100)),
@@ -165,7 +165,6 @@ class _AnnotationCreateState extends State<AnnotationCreate> {
                                 child: ElevatedButton.icon(
                                     onPressed: () {
                                       _form.currentState?.save();
-
                                       Provider.of<AnnotationRepository>(context,
                                               listen: false)
                                           .add(Annotation(

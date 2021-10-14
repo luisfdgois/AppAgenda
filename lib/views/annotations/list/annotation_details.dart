@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_agenda/data/AnnotationRepository.dart';
 import 'package:projeto_agenda/models/Annotation.dart';
 import 'package:date_format/date_format.dart';
+import 'package:projeto_agenda/routes/app_routes.dart';
+import 'package:provider/provider.dart';
 
 class AnnotationDetails extends StatelessWidget {
   final Annotation annotation;
@@ -9,8 +12,8 @@ class AnnotationDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
 
+    return ListView(
       children: [
         _buildPropertyAndValue("Title:", annotation.Title, 70),
         _buildPropertyAndValue("Description:", annotation.Description, 10),
@@ -20,13 +23,18 @@ class AnnotationDetails extends StatelessWidget {
         else
           _buildPropertyAndValue("Date:",
               formatDate(annotation.Date, ['mm', '/', 'dd', '/', 'yyyy']), 10),
-        _buttons()
+        Row(
+          children: [
+            _editButton(context, annotation),
+            _deleteButton(context)
+          ],
+        )
       ],
     );
   }
 
-  Widget _buildPropertyAndValue(
-      String propertyName, String value, double marginTop) {
+  Widget _buildPropertyAndValue(String propertyName, String value,
+      double marginTop) {
     return Column(children: [
       Container(
         color: Color(0xff7FBCDE),
@@ -84,31 +92,40 @@ class AnnotationDetails extends StatelessWidget {
     );
   }
 
-  Widget _buttons() {
-    return Row(
-      children: [
-        Padding(
-            padding: EdgeInsets.only(left: 100, top: 10, bottom: 10, right: 5),
-            child: ElevatedButton.icon(
-                onPressed: () => {},
-                icon: Icon(Icons.edit, size: 20),
-                label: Text("Edit", style: TextStyle(fontSize: 18)),
-                style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(Colors.blueAccent)))),
-        Padding(
-            padding: EdgeInsets.only(left: 10, top: 10, bottom: 10, right: 5),
-            child: ElevatedButton.icon(
-                onPressed: () => {},
-                icon: Icon(
-                  Icons.delete_forever,
-                  size: 20,
-                ),
-                label: Text("Delete", style: TextStyle(fontSize: 18)),
-                style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(Colors.deepOrangeAccent))))
-      ],
+  Widget _deleteButton(BuildContext context) {
+    final AnnotationRepository _repository = Provider.of(context);
+
+    return Padding(
+        padding: EdgeInsets.only(left: 10, top: 10, bottom: 10, right: 5),
+        child: ElevatedButton.icon(
+            onPressed: () {
+              _repository.remove(annotation.Id!);
+              Navigator.of(context).pop();
+            },
+            icon: Icon(
+              Icons.delete_forever,
+              size: 20,
+            ),
+            label: Text("Delete", style: TextStyle(fontSize: 18)),
+            style: ButtonStyle(
+                backgroundColor:
+                MaterialStateProperty.all(Colors.deepOrangeAccent)))
     );
+  }
+
+  Widget _editButton(BuildContext context, Annotation annotation) {
+    return Padding(
+        padding: EdgeInsets.only(left: 100, top: 10, bottom: 10, right: 5),
+        child: ElevatedButton.icon(
+            onPressed: () =>
+            {
+              Navigator.of(context).pushNamed(
+                  AppRoutes.ANNOTATION_EDIT, arguments: annotation)
+            },
+            icon: Icon(Icons.edit, size: 20),
+            label: Text("Edit", style: TextStyle(fontSize: 18)),
+            style: ButtonStyle(
+                backgroundColor:
+                MaterialStateProperty.all(Colors.blueAccent))));
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_agenda/data/AnnotationRepository.dart';
 import 'package:projeto_agenda/data/query_filters/GetAnnotationsParam.dart';
-import 'package:projeto_agenda/views/annotations_listview/annotation_tile.dart';
+import 'package:projeto_agenda/views/annotations/list/annotation_tile.dart';
 import 'package:provider/provider.dart';
 
 class AnnotationList extends StatelessWidget {

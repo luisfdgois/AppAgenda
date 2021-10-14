@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_agenda/views/annotations_forms/annotation_create.dart';
+import 'package:projeto_agenda/routes/app_routes.dart';
 
 class AnnotationFloating extends StatelessWidget {
   @override
@@ -9,8 +9,7 @@ class AnnotationFloating extends StatelessWidget {
       foregroundColor: Colors.white,
       child: Icon(Icons.add),
       onPressed: () => {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => AnnotationCreate()))
+        Navigator.of(context).pushNamed(AppRoutes.ANNOTATION_CREATE)
       },
     );
   }

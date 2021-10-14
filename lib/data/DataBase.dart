@@ -2,7 +2,7 @@
 import 'package:projeto_agenda/models/Annotation.dart';
 
 final dummy_annotations = {
-  '1': Annotation(1, "Reunião de alinhamento sprint 1 Reunião de alinhamento sprint 1",
+  '1': Annotation(1, "Reunião de alinhamento sprint 1",
       "Reunião utilizada para debater mudanças solicitadas pelo cliente na regra de negócio.", "Meetings", DateTime.now(), false),
   '2': Annotation(2, "Reunião de alinhamento sprint 2",
       "Reunião utilizada para debater mudanças solicitadas pelo cliente na regra de negócio.", "Meetings", DateTime.now(), true),
@@ -21,13 +21,13 @@ final dummy_annotations = {
   '9': Annotation(9, "Reunião de alinhamento sprint 9",
       "Reunião utilizada para debater mudanças solicitadas pelo cliente na regra de negócio.", "Meetings", DateTime(2021, 10, 1), false),
   '10': Annotation(10, "Reunião de alinhamento sprint 10",
-      "Reunião utilizada para debater mudanças solicitadas pelo cliente na regra de negócio.", "Meetings", DateTime(2021, 10, 2), true),
+      "Reunião utilizada para debater mudanças solicitadas pelo cliente na regra de negócio.", "Meetings", DateTime(2021, 10, 4), true),
   '11': Annotation(11, "Reunião de alinhamento sprint 11",
-      "Reunião utilizada para debater mudanças solicitadas pelo cliente na regra de negócio.", "Meetings", DateTime(2021, 10, 2), false),
+      "Reunião utilizada para debater mudanças solicitadas pelo cliente na regra de negócio.", "Meetings", DateTime(2021, 10, 4), false),
   '12': Annotation(12, "Reunião de alinhamento sprint 12",
-      "Reunião utilizada para debater mudanças solicitadas pelo cliente na regra de negócio.", "Meetings", DateTime(2021, 10, 3), false),
+      "Reunião utilizada para debater mudanças solicitadas pelo cliente na regra de negócio.", "Meetings", DateTime(2021, 10, 5), false),
   '13': Annotation(13, "Reunião de alinhamento sprint 13",
-      "Reunião utilizada para debater mudanças solicitadas pelo cliente na regra de negócio.", "Meetings", DateTime(2021, 10, 3), false),
+      "Reunião utilizada para debater mudanças solicitadas pelo cliente na regra de negócio.", "Meetings", DateTime(2021, 10, 6), false),
   '14': Annotation(14, "Reunião de alinhamento sprint 14",
       "Reunião utilizada para debater mudanças solicitadas pelo cliente na regra de negócio.", "Meetings", DateTime(2021, 10, 6), false),
 };

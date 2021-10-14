@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:projeto_agenda/data/query_filters/GetAnnotationsParam.dart';
+import 'package:projeto_agenda/views/annotations/list/annotations_list.dart';
 import 'package:projeto_agenda/views/annotations_floating.dart';
-import 'package:projeto_agenda/views/annotations_listview/annotations_list.dart';
 import 'package:projeto_agenda/views/calendar/calendar_components.dart';
 import 'package:projeto_agenda/views/menu.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -63,6 +63,14 @@ class _HomeState extends State<Home> {
       onDaySelected: (selectedDay, _) {
         setState(() {
           param.selectedDate = selectedDay;
+        });
+      },
+      onPageChanged: (date) {
+        setState(() {
+          if(date.month == DateTime.now().month)
+            param.selectedDate = DateTime.now();
+          else
+            param.selectedDate = date;
         });
       },
       selectedDayPredicate: (date) {
