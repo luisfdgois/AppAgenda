@@ -142,7 +142,7 @@ class _AnnotationCreateState extends State<AnnotationCreate> {
                                       },
                                       icon: Icon(Icons.calendar_today,
                                           color: Colors.orangeAccent,
-                                          size: 35)),
+                                          size: 32)),
                                 ),
                                 Expanded(
                                     flex: 3,
@@ -150,7 +150,7 @@ class _AnnotationCreateState extends State<AnnotationCreate> {
                                         width: 120,
                                         height: 40,
                                         margin: EdgeInsets.only(
-                                            left: 10, right: 20),
+                                            left: 5, right: 20),
                                         alignment: Alignment.center,
                                         decoration: BoxDecoration(
                                             borderRadius:
@@ -177,7 +177,7 @@ class _AnnotationCreateState extends State<AnnotationCreate> {
                                     child: Container(
                                         width: 80,
                                         height: 40,
-                                        margin: EdgeInsets.only(left: 10),
+                                        margin: EdgeInsets.only(left: 5),
                                         alignment: Alignment.center,
                                         decoration: BoxDecoration(
                                             borderRadius:

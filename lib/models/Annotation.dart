@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class Annotation {
   int? Id;
-  final String Title;
-  final String Description;
-  final String Category;
-  final DateTime Date;
-  final bool Notifiable;
+  String Title;
+  String Description;
+  String Category;
+  DateTime Date;
+  bool Notifiable;
 
   Annotation(
       this.Id,
