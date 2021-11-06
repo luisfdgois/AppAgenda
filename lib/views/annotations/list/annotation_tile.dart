@@ -14,7 +14,7 @@ class AnnotationTile extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Card(
-        color: Color(0xff7FBCDE),
+        color: Color.fromRGBO(8, 132, 202, 0.6),
         child: ListTile(
           title: _title(annotation),
           subtitle: _subtitle(annotation),
@@ -36,7 +36,7 @@ class AnnotationTile extends StatelessWidget {
                 flex: 15,
                 child: Text(
                   annotation.Title,
-                  maxLines: 1,
+                  maxLines: 1
                 )),
             if (annotation.Notifiable)
               Expanded(

@@ -4,7 +4,6 @@ import 'package:projeto_agenda/data/query_filters/GetAnnotationsParam.dart';
 import 'package:projeto_agenda/views/annotations/list/annotations_list.dart';
 import 'package:projeto_agenda/views/annotations_floating.dart';
 import 'package:projeto_agenda/views/calendar/calendar_components.dart';
-import 'package:projeto_agenda/views/menu.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:projeto_agenda/data/DataBase.dart';
 
@@ -22,17 +21,9 @@ class _HomeState extends State<Home> {
     return Scaffold(
         appBar: AppBar(
           title: Text("Agenda"),
-          backgroundColor: Color(0xff0884CA),
+          backgroundColor: Color(0xff0884ca),
           centerTitle: true,
           titleTextStyle: TextStyle(color: Colors.white, fontSize: 100),
-          actions: <Widget>[
-            IconButton(
-                onPressed: () => {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => MenuList()))
-                    },
-                icon: Icon(Icons.menu_outlined, size: 30))
-          ],
         ),
         body: Container(
           padding: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 75.0),
@@ -67,7 +58,7 @@ class _HomeState extends State<Home> {
       },
       onPageChanged: (date) {
         setState(() {
-          if(date.month == DateTime.now().month)
+          if (date.month == DateTime.now().month)
             param.selectedDate = DateTime.now();
           else
             param.selectedDate = date;

@@ -212,12 +212,12 @@ class _AnnotationCreateState extends State<AnnotationCreate> {
                                     },
                                     icon: Icon(Icons.add, size: 20),
                                     label: Text("Confirm",
-                                        style: TextStyle(fontSize: 19)),
+                                        style: TextStyle(fontSize: 20)),
                                     style: ButtonStyle(
                                         fixedSize: MaterialStateProperty.all(Size(250, 45)),
                                         backgroundColor:
                                             MaterialStateProperty.all(
-                                                Colors.green))))),
+                                                Colors.blueAccent))))),
                         Center(
                             child: Container(
                                 padding: EdgeInsets.only(top: 35),

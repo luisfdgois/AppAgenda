@@ -12,7 +12,6 @@ class AnnotationDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return ListView(
       children: [
         _buildPropertyAndValue("Title:", annotation.Title, 70),
@@ -24,20 +23,17 @@ class AnnotationDetails extends StatelessWidget {
           _buildPropertyAndValue("Date:",
               formatDate(annotation.Date, ['mm', '/', 'dd', '/', 'yyyy']), 10),
         Row(
-          children: [
-            _editButton(context, annotation),
-            _deleteButton(context)
-          ],
+          children: [_editButton(context, annotation), _deleteButton(context)],
         )
       ],
     );
   }
 
-  Widget _buildPropertyAndValue(String propertyName, String value,
-      double marginTop) {
+  Widget _buildPropertyAndValue(
+      String propertyName, String value, double marginTop) {
     return Column(children: [
       Container(
-        color: Color(0xff7FBCDE),
+        color: Color.fromRGBO(8, 132, 202, 0.6),
         width: 370,
         margin: EdgeInsets.only(top: marginTop, bottom: 5),
         padding: EdgeInsets.only(left: 15, top: 8),
@@ -99,8 +95,8 @@ class AnnotationDetails extends StatelessWidget {
         padding: EdgeInsets.only(left: 10, top: 10, bottom: 10, right: 5),
         child: ElevatedButton.icon(
             onPressed: () {
-              _repository.remove(annotation.Id!);
-              Navigator.of(context).pop();
+                _repository.remove(annotation.Id!);
+                Navigator.of(context).pop();
             },
             icon: Icon(
               Icons.delete_forever,
@@ -108,24 +104,21 @@ class AnnotationDetails extends StatelessWidget {
             ),
             label: Text("Delete", style: TextStyle(fontSize: 18)),
             style: ButtonStyle(
-                backgroundColor:
-                MaterialStateProperty.all(Colors.deepOrangeAccent)))
-    );
+                backgroundColor: MaterialStateProperty.all(Colors.red))));
   }
 
   Widget _editButton(BuildContext context, Annotation annotation) {
     return Padding(
         padding: EdgeInsets.only(left: 100, top: 10, bottom: 10, right: 5),
         child: ElevatedButton.icon(
-            onPressed: () =>
-            {
-              Navigator.of(context).pushNamed(
-                  AppRoutes.ANNOTATION_EDIT, arguments: annotation)
-            },
+            onPressed: () => {
+                  Navigator.of(context).pushNamed(AppRoutes.ANNOTATION_EDIT,
+                      arguments: annotation)
+                },
             icon: Icon(Icons.edit, size: 20),
             label: Text("Edit", style: TextStyle(fontSize: 18)),
             style: ButtonStyle(
                 backgroundColor:
-                MaterialStateProperty.all(Colors.blueAccent))));
+                    MaterialStateProperty.all(Colors.blueAccent))));
   }
 }

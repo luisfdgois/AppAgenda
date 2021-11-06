@@ -4,9 +4,6 @@ import 'package:projeto_agenda/home.dart';
 import 'package:projeto_agenda/routes/app_routes.dart';
 import 'package:projeto_agenda/views/annotations/forms/annotation_create.dart';
 import 'package:projeto_agenda/views/annotations/forms/annotation_edit.dart';
-import 'package:projeto_agenda/views/annotations/list/annotation_details.dart';
-import 'package:projeto_agenda/views/annotations/list/annotation_tile.dart';
-import 'package:projeto_agenda/views/annotations/list/annotations_list.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -26,7 +23,7 @@ class MyApp extends StatelessWidget {
             routes: {
               AppRoutes.HOME: (_) => Home(),
               AppRoutes.ANNOTATION_CREATE: (_) => AnnotationCreate(),
-              AppRoutes.ANNOTATION_EDIT: (_) => AnnotationEdit(),
+              AppRoutes.ANNOTATION_EDIT: (_) => AnnotationEdit()
             }));
   }
 }

@@ -49,9 +49,9 @@ class _AnnotationEditState extends State<AnnotationEdit> {
                           Container(
                             alignment: Alignment.centerLeft,
                             padding:
-                                EdgeInsets.only(top: 10, bottom: 10, left: 15),
+                            EdgeInsets.only(top: 10, bottom: 10, left: 15),
                             child:
-                                Text("Title:", style: TextStyle(fontSize: 16)),
+                            Text("Title:", style: TextStyle(fontSize: 16)),
                           ),
                           Container(
                               width: 330,
@@ -220,13 +220,13 @@ class _AnnotationEditState extends State<AnnotationEdit> {
                                     },
                                     icon: Icon(Icons.add, size: 20),
                                     label: Text("Confirm",
-                                        style: TextStyle(fontSize: 19)),
+                                        style: TextStyle(fontSize: 20)),
                                     style: ButtonStyle(
                                         fixedSize: MaterialStateProperty.all(
                                             Size(250, 45)),
                                         backgroundColor:
                                             MaterialStateProperty.all(
-                                                Colors.green))))),
+                                                Colors.blueAccent))))),
                         Center(
                             child: Container(
                                 padding: EdgeInsets.only(top: 35),
@@ -309,7 +309,7 @@ class _AnnotationEditState extends State<AnnotationEdit> {
 
     if (_selectedTime != null)
       annotation!.Date = DateTime(annotation!.Date.year, annotation!.Date.month,
-          annotation!.Date.day, annotation!.Date.hour, annotation!.Date.minute);
+          annotation!.Date.day, _selectedTime!.hour, _selectedTime!.minute);
 
     return annotation!.Date;
   }
