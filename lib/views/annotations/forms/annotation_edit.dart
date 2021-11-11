@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:projeto_agenda/data/AnnotationRepository.dart';
 import 'package:projeto_agenda/data/DataBase.dart';
 import 'package:projeto_agenda/models/Annotation.dart';
+import 'package:projeto_agenda/models/Category.dart';
 import 'package:provider/provider.dart';
 
 class AnnotationEdit extends StatefulWidget {
@@ -28,7 +29,7 @@ class _AnnotationEditState extends State<AnnotationEdit> {
   Widget build(BuildContext context) {
     annotation = ModalRoute.of(context)!.settings.arguments as Annotation;
 
-    _chosenCategory = annotation!.Category;
+    _chosenCategory = annotation!.category;
     TimeOfDay? _selectedTimeTemp = _getTime();
 
     return Scaffold(
@@ -59,7 +60,7 @@ class _AnnotationEditState extends State<AnnotationEdit> {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10)),
                               child: TextFormField(
-                                initialValue: annotation!.Title,
+                                initialValue: annotation!.title,
                                 style: TextStyle(fontSize: 17),
                                 decoration: _buildInputDecoration(),
                                 onSaved: (value) => _mapForm["title"] = value!,
@@ -82,7 +83,7 @@ class _AnnotationEditState extends State<AnnotationEdit> {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10)),
                               child: TextFormField(
-                                  initialValue: annotation!.Description,
+                                  initialValue: annotation!.description,
                                   style: TextStyle(fontSize: 17),
                                   keyboardType: TextInputType.multiline,
                                   maxLines: 6,
@@ -120,10 +121,10 @@ class _AnnotationEditState extends State<AnnotationEdit> {
                                   })
                                 },
                                 items: _categories
-                                    .map((String category) =>
+                                    .map((Category category) =>
                                         DropdownMenuItem<String>(
-                                            value: category,
-                                            child: Text(category,
+                                            value: category.name,
+                                            child: Text(category.name,
                                                 style:
                                                     TextStyle(fontSize: 16))))
                                     .toList(),
@@ -166,7 +167,7 @@ class _AnnotationEditState extends State<AnnotationEdit> {
                                             border: Border.all(
                                                 color: Color(0xffBCBCBC))),
                                         child: Text(
-                                          formatDate(annotation!.Date,
+                                          formatDate(annotation!.date,
                                               ['mm', '/', 'dd', '/', 'yyyy']),
                                           style: TextStyle(fontSize: 17),
                                         ))),
@@ -214,7 +215,7 @@ class _AnnotationEditState extends State<AnnotationEdit> {
                                       _form.currentState?.save();
                                       Provider.of<AnnotationRepository>(context,
                                               listen: false)
-                                          .update(annotation!.Id!,
+                                          .update(annotation!.id!,
                                               _createAnnotationFromFormFields());
                                       Navigator.of(context).pop();
                                     },
@@ -284,14 +285,14 @@ class _AnnotationEditState extends State<AnnotationEdit> {
   void _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
-        initialDate: annotation!.Date,
+        initialDate: annotation!.date,
         firstDate: DateTime(2000, 1, 1),
         lastDate: DateTime(2030, 12, 31),
         initialDatePickerMode: DatePickerMode.day);
 
     if (picked != null)
       setState(() {
-        annotation!.Date = picked;
+        annotation!.date = picked;
       });
   }
 
@@ -308,18 +309,18 @@ class _AnnotationEditState extends State<AnnotationEdit> {
   DateTime _getDate() {
 
     if (_selectedTime != null)
-      annotation!.Date = DateTime(annotation!.Date.year, annotation!.Date.month,
-          annotation!.Date.day, _selectedTime!.hour, _selectedTime!.minute);
+      annotation!.date = DateTime(annotation!.date.year, annotation!.date.month,
+          annotation!.date.day, _selectedTime!.hour, _selectedTime!.minute);
 
-    return annotation!.Date;
+    return annotation!.date;
   }
 
   TimeOfDay? _getTime(){
     if(_selectedTime != null)
       return _selectedTime;
 
-    else if(annotation!.Notifiable && _selectedTime == null)
-      return TimeOfDay.fromDateTime(annotation!.Date);
+    else if(annotation!.notifiable && _selectedTime == null)
+      return TimeOfDay.fromDateTime(annotation!.date);
 
     return null;
   }

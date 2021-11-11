@@ -35,10 +35,10 @@ class AnnotationTile extends StatelessWidget {
             Expanded(
                 flex: 15,
                 child: Text(
-                  annotation.Title,
+                  annotation.title,
                   maxLines: 1
                 )),
-            if (annotation.Notifiable)
+            if (annotation.notifiable)
               Expanded(
                   child: Icon(Icons.notifications_active_outlined, size: 18))
           ],
@@ -53,8 +53,8 @@ class AnnotationTile extends StatelessWidget {
             Expanded(
                 flex: 5,
                 child: Text(formatDate(
-                    annotation.Date, ['mm', '/', 'dd', '/', 'yyyy']))),
-            Expanded(flex: 5, child: Text(annotation.Category))
+                    annotation.date, ['mm', '/', 'dd', '/', 'yyyy']))),
+            Expanded(flex: 5, child: Text(annotation.category))
           ],
         ));
   }

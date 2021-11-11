@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:projeto_agenda/data/query_filters/GetAnnotationsParam.dart';
+import 'package:projeto_agenda/models/Category.dart';
 import 'package:projeto_agenda/views/annotations/list/annotations_list.dart';
-import 'package:projeto_agenda/views/annotations_floating.dart';
+import 'package:projeto_agenda/views/home_floating_buttons.dart';
 import 'package:projeto_agenda/views/calendar/calendar_components.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:projeto_agenda/data/DataBase.dart';
@@ -36,7 +37,7 @@ class _HomeState extends State<Home> {
             ],
           ),
         ),
-        floatingActionButton: AnnotationFloating());
+        floatingActionButton: HomeFloatingButtons());
   }
 
   Widget _calendarTable() {
@@ -107,9 +108,10 @@ class _HomeState extends State<Home> {
                 setState(() => {param.selectedCategory = newChoice!})
               },
               items: categories
-                  .map((String category) => DropdownMenuItem<String>(
-                      value: category,
-                      child: Text(category, style: TextStyle(fontSize: 16))))
+                  .map((Category category) => DropdownMenuItem<String>(
+                      value: category.name,
+                      child:
+                          Text(category.name, style: TextStyle(fontSize: 16))))
                   .toList(),
             )),
       ],

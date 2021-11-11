@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:projeto_agenda/routes/app_routes.dart';
+import 'package:projeto_agenda/views/categories/categories_list.dart';
 
-class AnnotationFloating extends StatelessWidget {
+class HomeFloatingButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SpeedDial(
@@ -17,7 +18,8 @@ class AnnotationFloating extends StatelessWidget {
           backgroundColor: Color(0xff0884CA),
           label: "Categories",
           onTap: () => {
-            Navigator.of(context).pushNamed(AppRoutes.ANNOTATION_CREATE)
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => CategoriesList()))
           },
         ),
         SpeedDialChild(

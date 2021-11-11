@@ -8,27 +8,27 @@ class AnnotationRepository extends ChangeNotifier {
 
   List<Annotation> all(GetAnnotationsParam param) {
     var query = _annotations.values.where((annotation) =>
-        (annotation.Date.year == param.selectedDate.year) &&
-        (annotation.Date.month == param.selectedDate.month) &&
-        (annotation.Date.day == param.selectedDate.day));
+        (annotation.date.year == param.selectedDate.year) &&
+        (annotation.date.month == param.selectedDate.month) &&
+        (annotation.date.day == param.selectedDate.day));
 
     if (param.selectedCategory != null)
       query = query
-          .where((annotation) => annotation.Category == param.selectedCategory);
+          .where((annotation) => annotation.category == param.selectedCategory);
 
     if (param.isNotifiable != false)
-      query = query.where((annotation) => annotation.Notifiable == true);
+      query = query.where((annotation) => annotation.notifiable == true);
 
     return query.toList();
   }
 
   Annotation getById(int id){
-    return _annotations.values.firstWhere((element) => element.Id == id);
+    return _annotations.values.firstWhere((element) => element.id == id);
   }
 
   void add(Annotation annotation) {
-    final id = _annotations.values.last.Id! + 1;
-    annotation.Id = id;
+    final id = _annotations.values.last.id! + 1;
+    annotation.id = id;
 
     _annotations.putIfAbsent(id.toString(), () => annotation);
 
@@ -36,17 +36,17 @@ class AnnotationRepository extends ChangeNotifier {
   }
 
   void update(int id, Annotation annotation) {
-    _annotations.removeWhere((key, value) => value.Id == id);
+    _annotations.removeWhere((key, value) => value.id == id);
 
-    annotation.Id = id;
+    annotation.id = id;
 
-    _annotations.putIfAbsent(annotation.Id.toString(), () => annotation);
+    _annotations.putIfAbsent(annotation.id.toString(), () => annotation);
 
     notifyListeners();
   }
 
   void remove(int id) {
-    _annotations.removeWhere((key, value) => value.Id == id);
+    _annotations.removeWhere((key, value) => value.id == id);
 
     notifyListeners();
   }

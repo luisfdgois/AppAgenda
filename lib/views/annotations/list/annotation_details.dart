@@ -14,14 +14,14 @@ class AnnotationDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        _buildPropertyAndValue("Title:", annotation.Title, 70),
-        _buildPropertyAndValue("Description:", annotation.Description, 10),
-        _buildPropertyAndValue("Category:", annotation.Category, 10),
-        if (annotation.Notifiable)
-          _notifiable(annotation.Date, 10)
+        _buildPropertyAndValue("Title:", annotation.title, 70),
+        _buildPropertyAndValue("Description:", annotation.description, 10),
+        _buildPropertyAndValue("Category:", annotation.category, 10),
+        if (annotation.notifiable)
+          _notifiable(annotation.date, 10)
         else
           _buildPropertyAndValue("Date:",
-              formatDate(annotation.Date, ['mm', '/', 'dd', '/', 'yyyy']), 10),
+              formatDate(annotation.date, ['mm', '/', 'dd', '/', 'yyyy']), 10),
         Row(
           children: [_editButton(context, annotation), _deleteButton(context)],
         )
@@ -51,7 +51,7 @@ class AnnotationDetails extends StatelessWidget {
     return Column(
       children: [
         Container(
-            color: Color(0xff7FBCDE),
+            color: Color(0xff0884CA),
             width: 370,
             margin: EdgeInsets.only(top: marginTop, bottom: 5),
             padding: EdgeInsets.only(left: 15, top: 8),
@@ -95,7 +95,7 @@ class AnnotationDetails extends StatelessWidget {
         padding: EdgeInsets.only(left: 10, top: 10, bottom: 10, right: 5),
         child: ElevatedButton.icon(
             onPressed: () {
-                _repository.remove(annotation.Id!);
+                _repository.remove(annotation.id!);
                 Navigator.of(context).pop();
             },
             icon: Icon(
@@ -119,6 +119,6 @@ class AnnotationDetails extends StatelessWidget {
             label: Text("Edit", style: TextStyle(fontSize: 18)),
             style: ButtonStyle(
                 backgroundColor:
-                    MaterialStateProperty.all(Colors.blueAccent))));
+                    MaterialStateProperty.all(Color(0xff0884CA)))));
   }
 }

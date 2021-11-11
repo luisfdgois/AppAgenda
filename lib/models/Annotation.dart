@@ -1,17 +1,11 @@
-
 class Annotation {
-  int? Id;
-  String Title;
-  String Description;
-  String Category;
-  DateTime Date;
-  bool Notifiable;
+  int? id;
+  String title;
+  String description;
+  String category;
+  DateTime date;
+  bool notifiable;
 
-  Annotation(
-      this.Id,
-      this.Title,
-      this.Description,
-      this.Category,
-      this.Date,
-      this.Notifiable);
+  Annotation(this.id, this.title, this.description, this.category, this.date,
+      this.notifiable);
 }

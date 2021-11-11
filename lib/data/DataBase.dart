@@ -1,5 +1,6 @@
 
 import 'package:projeto_agenda/models/Annotation.dart';
+import 'package:projeto_agenda/models/Category.dart';
 
 final dummy_annotations = {
   '1': Annotation(1, "Reunião de alinhamento sprint 1",
@@ -33,9 +34,9 @@ final dummy_annotations = {
 };
 
 final dummy_categories = {
-  '1': "Any",
-  '2': "Meetings",
-  '3': "Gym",
-  '4': "Work",
-  '5': "College"
+  '1': Category(1, "Any"),
+  '2': Category(2, "Meetings"),
+  '3': Category(3, "Gym"),
+  '4': Category(4, "Work"),
+  '5': Category(5, "College")
 };

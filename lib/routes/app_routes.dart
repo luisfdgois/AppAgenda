@@ -5,4 +5,5 @@ class AppRoutes{
   static const ANNOTATION_LIST = '/annotations/forms/annotations/list/annotation_list';
   static const ANNOTATION_TILE = '/annotations/forms/annotations/list/annotation_tile';
   static const ANNOTATION_DETAILS = '/annotations/forms/annotations/list/annotation_details';
+  static const CATEGORIES_LIST = '/categories/categories_list';
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:projeto_agenda/data/AnnotationRepository.dart';
 import 'package:projeto_agenda/data/DataBase.dart';
 import 'package:projeto_agenda/models/Annotation.dart';
+import 'package:projeto_agenda/models/Category.dart';
 import 'package:provider/provider.dart';
 
 class AnnotationCreate extends StatefulWidget {
@@ -112,10 +113,10 @@ class _AnnotationCreateState extends State<AnnotationCreate> {
                                   })
                                 },
                                 items: _categories
-                                    .map((String category) =>
+                                    .map((Category category) =>
                                         DropdownMenuItem<String>(
-                                            value: category,
-                                            child: Text(category,
+                                            value: category.name,
+                                            child: Text(category.name,
                                                 style:
                                                     TextStyle(fontSize: 17))))
                                     .toList(),
