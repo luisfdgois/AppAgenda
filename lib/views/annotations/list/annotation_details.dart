@@ -51,7 +51,7 @@ class AnnotationDetails extends StatelessWidget {
     return Column(
       children: [
         Container(
-            color: Color(0xff0884CA),
+            color: Color.fromRGBO(8, 132, 202, 0.6),
             width: 370,
             margin: EdgeInsets.only(top: marginTop, bottom: 5),
             padding: EdgeInsets.only(left: 15, top: 8),
