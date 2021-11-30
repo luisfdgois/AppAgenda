@@ -5,10 +5,10 @@ import 'package:projeto_agenda/home.dart';
 import 'package:projeto_agenda/routes/app_routes.dart';
 import 'package:projeto_agenda/views/annotations/forms/annotation_create.dart';
 import 'package:projeto_agenda/views/annotations/forms/annotation_edit.dart';
-import 'package:projeto_agenda/views/categories/categories_list.dart';
 import 'package:provider/provider.dart';
+import 'package:android_alarm_manager/android_alarm_manager.dart';
 
-void main() {
+main() async {
   runApp(MyApp());
 }
 

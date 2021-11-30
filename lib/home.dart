@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:projeto_agenda/data/CategoryRepository.dart';
 import 'package:projeto_agenda/data/query_filters/GetAnnotationsParam.dart';
 import 'package:projeto_agenda/models/Category.dart';
 import 'package:projeto_agenda/views/annotations/list/annotations_list.dart';
 import 'package:projeto_agenda/views/home_floating_buttons.dart';
 import 'package:projeto_agenda/views/calendar/calendar_components.dart';
+import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:projeto_agenda/data/DataBase.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -14,11 +15,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final categories = {...dummy_categories}.values.toList();
   GetAnnotationsParam param = GetAnnotationsParam(DateTime.now(), null, false);
 
   @override
   Widget build(BuildContext context) {
+    final CategoryRepository _categories = Provider.of(context);
+
     return Scaffold(
         appBar: AppBar(
           title: Text("Agenda"),
@@ -32,7 +34,7 @@ class _HomeState extends State<Home> {
             children: [
               _calendarTable(),
               _divider(),
-              _filters(),
+              _filters(_categories),
               AnnotationList(param)
             ],
           ),
@@ -78,7 +80,7 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Widget _filters() {
+  Widget _filters(CategoryRepository repository) {
     return Container(
         child: Row(
       children: [
@@ -107,7 +109,7 @@ class _HomeState extends State<Home> {
               onChanged: (String? newChoice) => {
                 setState(() => {param.selectedCategory = newChoice!})
               },
-              items: categories
+              items: repository.getAll()
                   .map((Category category) => DropdownMenuItem<String>(
                       value: category.name,
                       child:

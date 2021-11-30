@@ -2,7 +2,7 @@ import 'package:date_format/date_format.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:projeto_agenda/data/AnnotationRepository.dart';
-import 'package:projeto_agenda/data/DataBase.dart';
+import 'package:projeto_agenda/data/CategoryRepository.dart';
 import 'package:projeto_agenda/models/Annotation.dart';
 import 'package:projeto_agenda/models/Category.dart';
 import 'package:provider/provider.dart';
@@ -18,14 +18,14 @@ class _AnnotationCreateState extends State<AnnotationCreate> {
   final _form = GlobalKey<FormState>();
   final Map<String, Object> _mapForm = {};
 
-  final _categories = {...dummy_categories}.values.toList();
   String? _chosenCategory;
-
   DateTime _selectedDate = DateTime.now();
   TimeOfDay? _selectedTime;
 
   @override
   Widget build(BuildContext context) {
+    final CategoryRepository _categories = Provider.of(context);
+
     return Scaffold(
         appBar: AppBar(
             title: Text("New Annotation", textAlign: TextAlign.center),
@@ -112,7 +112,7 @@ class _AnnotationCreateState extends State<AnnotationCreate> {
                                     _mapForm["title"] = _chosenCategory!;
                                   })
                                 },
-                                items: _categories
+                                items: _categories.getAll()
                                     .map((Category category) =>
                                         DropdownMenuItem<String>(
                                             value: category.name,

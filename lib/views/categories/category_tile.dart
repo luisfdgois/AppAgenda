@@ -82,7 +82,6 @@ class CategoryTile extends StatelessWidget {
         onPressed: () {
           Alert(
               context: context,
-              type: AlertType.warning,
               title: "Delete Category",
               desc:
                   "This action will also remove all annotations belonging to this Category.",

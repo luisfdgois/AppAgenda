@@ -1,7 +1,9 @@
+import 'package:android_alarm_manager/android_alarm_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:projeto_agenda/routes/app_routes.dart';
 import 'package:projeto_agenda/views/categories/categories_list.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class HomeFloatingButtons extends StatelessWidget {
   @override
@@ -17,7 +19,8 @@ class HomeFloatingButtons extends StatelessWidget {
           foregroundColor: Colors.white,
           backgroundColor: Color(0xff0884CA),
           label: "Categories",
-          onTap: () => {
+          onTap: () =>
+          {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => CategoriesList()))
           },
@@ -27,11 +30,34 @@ class HomeFloatingButtons extends StatelessWidget {
           foregroundColor: Colors.white,
           backgroundColor: Color(0xff0884CA),
           label: "New Annotation",
-          onTap: () => {
+          onTap: () =>
+          {
             Navigator.of(context).pushNamed(AppRoutes.ANNOTATION_CREATE)
+          },
+        ),
+        SpeedDialChild(
+          child: Icon(Icons.alarm),
+          foregroundColor: Colors.white,
+          backgroundColor: Color(0xff0884CA),
+          label: "Test Alarm",
+          onTap: ()
+          {
+            Test(context);
+            AndroidAlarmManager.periodic(Duration(seconds: 5), 0, () {
+              Test(context);
+            });
           },
         )
       ],
     );
   }
+}
+
+void Test(BuildContext context) {
+  Alert(
+    context: context,
+    title: "Delete Category",
+    desc:
+    "This action will also remove all annotations belonging to this Category.",
+  ).show();
 }
